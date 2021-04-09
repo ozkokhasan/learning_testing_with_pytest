@@ -1,4 +1,5 @@
 from ozkokapitest.src.utilities.request_utilities import RequestUtility
+from ozkokapitest.src.utilities.woo_api_utility import WooApiUtility
 import logging as logger
 
 
@@ -6,6 +7,7 @@ class ProductsHelper(object):
 
     def __init__(self):
         self.requests_utility = RequestUtility()
+        self.woo_helper = WooApiUtility()
 
     def get_product_by_id(self, product_id):
         return self.requests_utility.get(f"products/{product_id}")
@@ -34,3 +36,6 @@ class ProductsHelper(object):
                 f"Unable to find all products after {max_pages} pages.")
 
         return all_products
+
+    def call_update_an_product(self, product_id, payload):
+        return self.woo_helper.put(f'products/{product_id}', params=payload)

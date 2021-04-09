@@ -12,5 +12,22 @@ WOO_API_HOSTS = {
 }
 
 DB_HOSTS = {
-
+    "local": {
+        "test": {
+            "host": "localhost",
+            "database": "local",
+            "table_prefix": "wp_",
+            "socket": None,
+            "port": 10005
+        }
+    },
+    "docker": {
+        "test": {
+            "host": "host.docker.internal",
+            "database": "local",
+            "table_prefix": "wp_",
+            "socket": None,
+            "port": 10005
+        }
+    }
 }
